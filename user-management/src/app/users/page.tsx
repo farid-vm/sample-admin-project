@@ -1,6 +1,6 @@
 import { UserList } from "@/components/UserList";
 import { addQueryParams } from "@/libs/helpers/main";
-import { User, UserListParams, UserResponse } from "@/libs/types/user";
+import { User, UserListParams } from "@/libs/types/user";
 
 export default async function Users({
   params,
@@ -13,13 +13,15 @@ export default async function Users({
   let query = 'http://localhost:4000/users';
   query = addQueryParams(query, userParams);
   const getusers = await fetch(query,{
-  cache: 'force-cache',
-});
+    cache: 'force-cache',
+  });
   if (!getusers.ok) {
     throw new Error("Failed to fetch users");
   }
   console.log("@@@@@@@@@")
+  console.log(query)
   const users: User[] = await getusers.json();
+  console.log(users)
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gray-50 dark:bg-zinc-900 p-8">
       <div className="w-full max-w-6xl space-y-6">

@@ -15,6 +15,8 @@ export class UsersService {
       query = query.or(`name.ilike.*${escaped}*,email.ilike.*${escaped}*`);
     }
     const { data, error } = await query;
+    console.log("*******************");
+    console.log(data)
     if (error) throw error;
     return data;
   }
