@@ -40,24 +40,12 @@ npm install -g pnpm
 
 ## Getting Started
 
-### 1. Clone the Repository
+### Clone the Repository
 
 ```bash
 git clone <repository-url>
 cd <repository-name>
 ```
-
-### 2. Install Dependencies
-
-From the **root of the repository**, simply run:
-
-```bash
-pnpm install
-```
-
-That’s it. This will install all required dependencies for both the API and UI projects.
-
----
 
 ## Running the Projects
 
