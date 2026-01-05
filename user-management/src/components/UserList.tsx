@@ -26,7 +26,7 @@ export const UserList = ({
     isFetching.current = true;
     setLoading(true);
     try {
-      let query = `http://localhost:4000/users?limit=${limit}&page=${pageParam}`;
+      let query = `${process.env.NEXT_PUBLIC_API_URL}/users?limit=${limit}&page=${pageParam}`;
       if (searchvalue.trim() !== "") {
         query += `&search=${searchvalue}`;
       }

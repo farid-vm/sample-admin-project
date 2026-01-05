@@ -10,7 +10,7 @@ export default async function Users({
   searchParams: Promise<UserListParams>;
 }) {
   const userParams = await searchParams;
-  let query = 'http://localhost:4000/users';
+  let query = `${process.env.NEXT_PUBLIC_API_URL}/users`;
   query = addQueryParams(query, userParams);
   const getusers = await fetch(query,{
     cache: 'no-store',

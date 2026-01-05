@@ -19,7 +19,7 @@ export default function UserDetail({ user }: { user: User }) {
     setMessage(null);
 
     try {
-      const res = await fetch(`http://localhost:4000/users/${user.id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${user.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

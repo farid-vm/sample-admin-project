@@ -7,7 +7,7 @@ export default async function Page({
   params: Promise<{id: string}>
 }) {
     const {id} = await params;
-    const query = `http://localhost:4000/users/${id}`;
+    const query = `${process.env.NEXT_PUBLIC_API_URL}/users/${id}`;
     const getuser = await fetch(query,{
         cache: 'no-store',
     });
