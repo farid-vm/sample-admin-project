@@ -15,9 +15,36 @@ export class UsersService {
       query = query.or(`name.ilike.*${escaped}*,email.ilike.*${escaped}*`);
     }
     const { data, error } = await query;
-    console.log("*******************");
-    console.log(data)
     if (error) throw error;
+    return data;
+  }
+
+  public async findOne(id: string) {
+    const { data, error } = await this.supabase.client
+      .from('users')
+      .select('id, name, email, role, created_at')
+      .eq('id', id)
+      .single();
+
+    if (error) throw error;
+    return data;
+  }
+
+  public async update(id: string, updateData: any) {
+    if (!updateData || Object.keys(updateData).length === 0) {
+      throw new Error('Update data cannot be empty');
+    }
+
+    const { data, error } = await this.supabase.client
+      .from('users')
+      .update(updateData)
+      .eq('id', id)
+      .select('id, name, email, role, created_at')
+      .single();
+
+    if (error) {
+      throw error;
+    }
     return data;
   }
 }
