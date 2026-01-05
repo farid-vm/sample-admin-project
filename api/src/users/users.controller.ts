@@ -7,14 +7,14 @@ export class UsersController {
 
   @Get()
   async getUsers(@Query('limit') limit?: string,
-    @Query('offset') offset?: string,
-    /* @Query('role') role?: string */) {
+    @Query('page') page?: string,
+    @Query('search') search?: string) {
     if (!limit) limit = '10';
-    if (!offset) offset = '1';
+    if (!page) page = '1';
     return this.usersService.find(
       parseInt(limit),
-      parseInt(offset),
-      /* role */
+      parseInt(page),
+      search
     );
   }
 }
