@@ -13,17 +13,14 @@ export default async function Users({
   let query = 'http://localhost:4000/users';
   query = addQueryParams(query, userParams);
   const getusers = await fetch(query,{
-    cache: 'force-cache',
+    cache: 'no-store',
   });
   if (!getusers.ok) {
     throw new Error("Failed to fetch users");
   }
-  console.log("@@@@@@@@@")
-  console.log(query)
   const users: User[] = await getusers.json();
-  console.log(users)
   return (
-    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-50 dark:bg-zinc-900 p-8">
+    <div className="flex flex-col items-center justify-start min-h-screen md:bg-gray-50 md:p-8">
       <div className="w-full max-w-6xl space-y-6">
         <UserList initialUsers={users} userParams={userParams} />
       </div>
